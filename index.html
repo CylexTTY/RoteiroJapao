@@ -761,103 +761,38 @@
         }
 
         .phrase-item {
-            padding: 12px 16px;
+            padding: 14px 16px;
             border-bottom: 1px solid var(--gray-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
         }
 
         .phrase-item:last-child {
             border-bottom: none;
         }
 
-        .phrase-text {
-            flex: 1;
-        }
-
         .phrase-pt {
             font-size: 0.9rem;
             color: var(--gray);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .phrase-jp {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--black);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .phrase-read {
-            font-size: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+
+        .phrase-speak {
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--vermillion);
-            font-style: italic;
-        }
-
-        .phrase-sound {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--blue);
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            margin-top: 8px;
-        }
-
-        .phrase-sound:active {
-            background: #2459B8;
-            transform: scale(0.95);
-        }
-
-        /* Info Page - Seções Expansíveis */
-        .info-card {
-            background: var(--white);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            border: 1px solid var(--gray-light);
-        }
-
-        .info-card-header {
-            padding: 14px 16px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            background: var(--black);
-            color: white;
-        }
-
-        .info-card-header:active {
-            opacity: 0.9;
-        }
-
-        .info-card-toggle {
-            font-size: 0.65rem;
-            transition: transform 0.3s ease;
-            opacity: 0.7;
-        }
-
-        .info-card.open .info-card-toggle {
-            transform: rotate(180deg);
-        }
-
-        .info-card-content {
-            display: none;
-            padding: 14px 16px;
-        }
-
-        .info-card.open .info-card-content {
-            display: block;
+            letter-spacing: 0.3px;
         }
 
         /* Cores sutis para dias especiais */
@@ -4237,43 +4172,33 @@
                 </div>
             </div>
 
-            <a href="https://maps.app.goo.gl/XnAyLVtw7UtbhctW9" target="_blank" class="map-all-btn">Ver Mapa Completo da Viagem</a>
+            <a href="https://maps.app.goo.gl/XnAyLVtw7UtbhctW9" target="_blank" class="map-all-btn">🗺️ Ver Mapa Completo da Viagem</a>
 
-            <!-- Legenda -->
-            <div class="info-card" onclick="toggleInfoCard(this)">
-                <div class="info-card-header" style="background: var(--gray);">
-                    <span>Legenda das Cores dos Dias</span>
-                    <span class="info-card-toggle">▼</span>
-                </div>
-                <div class="info-card-content">
-                    <div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.95rem;">
-                        <span style="display: flex; align-items: center; gap: 6px;">
-                            <span style="width: 18px; height: 5px; background: var(--blue); border-radius: 2px;"></span>
-                            Tokyo (D1-D8, D16-D18)
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 6px;">
-                            <span style="width: 18px; height: 5px; background: var(--purple); border-radius: 2px;"></span>
-                            Kyoto (D9-D12)
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 6px;">
-                            <span style="width: 18px; height: 5px; background: var(--green); border-radius: 2px;"></span>
-                            Nara (D13)
-                        </span>
-                        <span style="display: flex; align-items: center; gap: 6px;">
-                            <span style="width: 18px; height: 5px; background: #E67E22; border-radius: 2px;"></span>
-                            Osaka (D14-D15)
-                        </span>
-                    </div>
+            <div class="note">
+                <div class="note-title">🎨 Legenda das Cores dos Dias</div>
+                <div class="note-text" style="display: flex; flex-wrap: wrap; gap: 12px;">
+                    <span style="display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 16px; height: 4px; background: var(--blue); border-radius: 2px;"></span>
+                        Tokyo (D1-D8, D16-D18)
+                    </span>
+                    <span style="display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 16px; height: 4px; background: var(--purple); border-radius: 2px;"></span>
+                        Kyoto (D9-D12)
+                    </span>
+                    <span style="display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 16px; height: 4px; background: var(--green); border-radius: 2px;"></span>
+                        Nara (D13)
+                    </span>
+                    <span style="display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 16px; height: 4px; background: #E67E22; border-radius: 2px;"></span>
+                        Osaka (D14-D15)
+                    </span>
                 </div>
             </div>
 
-            <!-- Reservas -->
-            <div class="info-card" onclick="toggleInfoCard(this)">
-                <div class="info-card-header" style="background: var(--vermillion);">
-                    <span>Reservas Obrigatórias</span>
-                    <span class="info-card-toggle">▼</span>
-                </div>
-                <div class="info-card-content">
+            <div class="info-section">
+                <div class="info-section-header">🎟️ Reservas Obrigatórias</div>
+                <div class="info-section-body">
                     <div class="info-row">
                         <span class="info-row-label">27/02 - Tokyo Skytree</span>
                         <span class="info-row-value">¥2.100</span>
@@ -4290,19 +4215,17 @@
                         <span class="info-row-label">12/03 - Sumo Club</span>
                         <span class="info-row-value">~¥16.000</span>
                     </div>
-                    <div style="margin-top: 12px; padding: 10px; background: #FDEAEA; border-radius: 8px; font-size: 0.9rem; color: var(--vermillion);">
-                        <strong>Reservar 30-60 dias antes!</strong> Especialmente USJ e Shibuya Sky.
-                    </div>
                 </div>
             </div>
 
-            <!-- Transportes -->
-            <div class="info-card" onclick="toggleInfoCard(this)">
-                <div class="info-card-header" style="background: var(--blue);">
-                    <span>Transportes Principais</span>
-                    <span class="info-card-toggle">▼</span>
-                </div>
-                <div class="info-card-content">
+            <div class="note important">
+                <div class="note-title">⚠️ Reservar 30-60 dias antes!</div>
+                <div class="note-text">Especialmente USJ e Shibuya Sky - esgotam rápido em março (alta temporada)!</div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-section-header">🚄 Transportes Principais</div>
+                <div class="info-section-body">
                     <div class="info-row">
                         <span class="info-row-label">Tokyo ↔ Kyoto (Shinkansen)</span>
                         <span class="info-row-value">2h40 · ¥13.850</span>
@@ -4327,20 +4250,18 @@
                         <span class="info-row-label">Ueno → Narita (Skyliner)</span>
                         <span class="info-row-value">36 min · ¥2.520</span>
                     </div>
-                    <div style="margin-top: 12px; padding: 10px; background: var(--cream); border-radius: 8px; font-size: 0.9rem;">
-                        <strong>IC Card - Welcome Suica:</strong> Comprar na chegada! ¥1.500 (com ¥1.500 de crédito). Funciona em metrô, trens, ônibus e konbinis.
-                    </div>
                 </div>
             </div>
 
-            <!-- Goshuins -->
-            <div class="info-card" onclick="toggleInfoCard(this)">
-                <div class="info-card-header" style="background: linear-gradient(135deg, var(--gold) 0%, #B8960C 100%);">
-                    <span>Goshuins - Lista Completa</span>
-                    <span class="info-card-toggle">▼</span>
-                </div>
-                <div class="info-card-content">
-                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--blue);">Tokyo (4)</div>
+            <div class="note">
+                <div class="note-title">💳 IC Card - Welcome Suica</div>
+                <div class="note-text">Comprar na chegada! ¥1.500 (com ¥1.500 de crédito). Funciona em metrô, trens, ônibus e konbinis.</div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-section-header">📜 Goshuins - Lista Completa</div>
+                <div class="info-section-body">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--vermillion);">Tokyo (4)</div>
                     <div class="info-row">
                         <span class="info-row-label">Senso-ji</span>
                         <span class="info-row-value">27/02</span>
@@ -4357,7 +4278,7 @@
                         <span class="info-row-label">Gotokuji Temple</span>
                         <span class="info-row-value">01/03</span>
                     </div>
-                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--purple);">Kyoto (7)</div>
+                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--vermillion);">Kyoto (7)</div>
                     <div class="info-row">
                         <span class="info-row-label">Fushimi Inari Taisha</span>
                         <span class="info-row-value">06/03</span>
@@ -4386,7 +4307,7 @@
                         <span class="info-row-label">Ryoan-ji</span>
                         <span class="info-row-value">08/03</span>
                     </div>
-                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--green);">Nara (2)</div>
+                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--vermillion);">Nara (2)</div>
                     <div class="info-row">
                         <span class="info-row-label">Todai-ji</span>
                         <span class="info-row-value">09/03</span>
@@ -4395,19 +4316,17 @@
                         <span class="info-row-label">Kasuga Taisha</span>
                         <span class="info-row-value">09/03</span>
                     </div>
-                    <div style="margin-top: 12px; padding: 10px; background: var(--cream); border-radius: 8px; font-size: 0.9rem;">
-                        <strong>Goshuincho:</strong> Comprar no primeiro templo (Senso-ji) - ¥1.500-2.000.
-                    </div>
                 </div>
             </div>
 
-            <!-- Konbinis -->
-            <div class="info-card" onclick="toggleInfoCard(this)">
-                <div class="info-card-header" style="background: var(--green);">
-                    <span>Konbinis - Melhores Opções</span>
-                    <span class="info-card-toggle">▼</span>
-                </div>
-                <div class="info-card-content">
+            <div class="note">
+                <div class="note-title">📜 Comprar Goshuincho</div>
+                <div class="note-text">No primeiro templo (Senso-ji) - ¥1.500-2.000. Comprar no Yogodo Hall ou Asakusa Shrine.</div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-section-header">🏪 Konbinis - Melhores Opções</div>
+                <div class="info-section-body">
                     <div class="info-row">
                         <span class="info-row-label">7-Eleven</span>
                         <span class="info-row-value">Melhor café, ATM internacional</span>
@@ -4423,13 +4342,9 @@
                 </div>
             </div>
 
-            <!-- Hotéis -->
-            <div class="info-card" onclick="toggleInfoCard(this)">
-                <div class="info-card-header" style="background: var(--purple);">
-                    <span>Hotéis</span>
-                    <span class="info-card-toggle">▼</span>
-                </div>
-                <div class="info-card-content">
+            <div class="info-section">
+                <div class="info-section-header">🏨 Hotéis</div>
+                <div class="info-section-body">
                     <div class="info-row">
                         <span class="info-row-label">Tokyo (25/02 - 05/03)</span>
                         <span class="info-row-value">Hotel Shu, Shinjuku</span>
@@ -4463,51 +4378,61 @@
                                 <div class="phrase-pt">Obrigado (muito usado)</div>
                                 <div class="phrase-jp">ありがとうございます</div>
                                 <div class="phrase-read">Arigatou gozaimasu</div>
+                                <div class="phrase-speak">Arigato gozaimass</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Obrigado (informal)</div>
                                 <div class="phrase-jp">ありがとう</div>
                                 <div class="phrase-read">Arigatou</div>
+                                <div class="phrase-speak">Arigato</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Com licença / Desculpa</div>
                                 <div class="phrase-jp">すみません</div>
                                 <div class="phrase-read">Sumimasen</div>
+                                <div class="phrase-speak">Sumimasén</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Desculpe (mais formal)</div>
                                 <div class="phrase-jp">ごめんなさい</div>
                                 <div class="phrase-read">Gomen nasai</div>
+                                <div class="phrase-speak">Gomen nassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Bom dia</div>
                                 <div class="phrase-jp">おはようございます</div>
                                 <div class="phrase-read">Ohayou gozaimasu</div>
+                                <div class="phrase-speak">Ohayo gozaimass</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Boa tarde / Olá</div>
                                 <div class="phrase-jp">こんにちは</div>
                                 <div class="phrase-read">Konnichiwa</div>
+                                <div class="phrase-speak">Kon-nitchi-uá</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Boa noite</div>
                                 <div class="phrase-jp">こんばんは</div>
                                 <div class="phrase-read">Konbanwa</div>
+                                <div class="phrase-speak">Komban-uá</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Por favor (ao pedir algo)</div>
                                 <div class="phrase-jp">お願いします</div>
                                 <div class="phrase-read">Onegai shimasu</div>
+                                <div class="phrase-speak">Onegai shimass</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Sim</div>
                                 <div class="phrase-jp">はい</div>
                                 <div class="phrase-read">Hai</div>
+                                <div class="phrase-speak">Rái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Não</div>
                                 <div class="phrase-jp">いいえ</div>
                                 <div class="phrase-read">Iie</div>
+                                <div class="phrase-speak">Iiê</div>
                             </div>
                         </div>
                     </div>
@@ -4523,51 +4448,55 @@
                                 <div class="phrase-pt">Um copo de água, por favor</div>
                                 <div class="phrase-jp">お水をください</div>
                                 <div class="phrase-read">Omizu wo kudasai</div>
+                                <div class="phrase-speak">Omizú o cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">A conta, por favor</div>
                                 <div class="phrase-jp">お会計お願いします</div>
                                 <div class="phrase-read">Okaikei onegai shimasu</div>
+                                <div class="phrase-speak">Okaikei onegai shimass</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Isso, por favor (apontando)</div>
                                 <div class="phrase-jp">これをください</div>
                                 <div class="phrase-read">Kore wo kudasai</div>
+                                <div class="phrase-speak">Coré o cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Mais um, por favor</div>
                                 <div class="phrase-jp">もう一つください</div>
                                 <div class="phrase-read">Mou hitotsu kudasai</div>
+                                <div class="phrase-speak">Mô hitótsu cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Estava delicioso!</div>
                                 <div class="phrase-jp">おいしかったです</div>
                                 <div class="phrase-read">Oishikatta desu</div>
+                                <div class="phrase-speak">Oishikáta dess</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Vou comer! (antes de comer)</div>
                                 <div class="phrase-jp">いただきます</div>
                                 <div class="phrase-read">Itadakimasu</div>
+                                <div class="phrase-speak">Itadakimass</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Obrigado pela refeição (após)</div>
                                 <div class="phrase-jp">ごちそうさまでした</div>
                                 <div class="phrase-read">Gochisousama deshita</div>
+                                <div class="phrase-speak">Gotchi-so-sama deshta</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Menu, por favor</div>
                                 <div class="phrase-jp">メニューをください</div>
                                 <div class="phrase-read">Menyuu wo kudasai</div>
+                                <div class="phrase-speak">Menyú o cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Mesa para 2 pessoas</div>
                                 <div class="phrase-jp">二人です</div>
                                 <div class="phrase-read">Futari desu</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Sem [ingrediente], por favor</div>
-                                <div class="phrase-jp">[ingrediente]抜きで</div>
-                                <div class="phrase-read">[ingrediente] nuki de</div>
+                                <div class="phrase-speak">Futári dess</div>
                             </div>
                         </div>
                     </div>
@@ -4583,41 +4512,43 @@
                                 <div class="phrase-pt">Quanto custa?</div>
                                 <div class="phrase-jp">いくらですか？</div>
                                 <div class="phrase-read">Ikura desu ka?</div>
+                                <div class="phrase-speak">Ikúra desska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Isso, por favor</div>
                                 <div class="phrase-jp">これをください</div>
                                 <div class="phrase-read">Kore wo kudasai</div>
+                                <div class="phrase-speak">Coré o cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Posso pagar com cartão?</div>
                                 <div class="phrase-jp">カードで払えますか？</div>
                                 <div class="phrase-read">Kaado de haraemasu ka?</div>
+                                <div class="phrase-speak">Cádo de haraemasska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Tax-free, por favor</div>
                                 <div class="phrase-jp">免税でお願いします</div>
                                 <div class="phrase-read">Menzei de onegai shimasu</div>
+                                <div class="phrase-speak">Menzei de onegai shimass</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Tem tamanho maior?</div>
                                 <div class="phrase-jp">大きいサイズはありますか？</div>
                                 <div class="phrase-read">Ookii saizu wa arimasu ka?</div>
+                                <div class="phrase-speak">Okii sáizu wa arimasska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Tem tamanho menor?</div>
                                 <div class="phrase-jp">小さいサイズはありますか？</div>
                                 <div class="phrase-read">Chiisai saizu wa arimasu ka?</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Posso experimentar?</div>
-                                <div class="phrase-jp">試着してもいいですか？</div>
-                                <div class="phrase-read">Shichaku shite mo ii desu ka?</div>
+                                <div class="phrase-speak">Tchiisái sáizu wa arimasska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Só estou olhando</div>
                                 <div class="phrase-jp">見ているだけです</div>
                                 <div class="phrase-read">Mite iru dake desu</div>
+                                <div class="phrase-speak">Mitéru daké dess</div>
                             </div>
                         </div>
                     </div>
@@ -4633,36 +4564,37 @@
                                 <div class="phrase-pt">Onde fica o banheiro?</div>
                                 <div class="phrase-jp">トイレはどこですか？</div>
                                 <div class="phrase-read">Toire wa doko desu ka?</div>
+                                <div class="phrase-speak">Toiré wa dôko desska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Onde fica a estação?</div>
                                 <div class="phrase-jp">駅はどこですか？</div>
                                 <div class="phrase-read">Eki wa doko desu ka?</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Onde fica [lugar]?</div>
-                                <div class="phrase-jp">[lugar]はどこですか？</div>
-                                <div class="phrase-read">[lugar] wa doko desu ka?</div>
+                                <div class="phrase-speak">Éki wa dôko desska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">É longe daqui?</div>
                                 <div class="phrase-jp">ここから遠いですか？</div>
                                 <div class="phrase-read">Koko kara tooi desu ka?</div>
+                                <div class="phrase-speak">Cocô cará tooi desska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">À direita</div>
                                 <div class="phrase-jp">右</div>
                                 <div class="phrase-read">Migi</div>
+                                <div class="phrase-speak">Migui</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">À esquerda</div>
                                 <div class="phrase-jp">左</div>
                                 <div class="phrase-read">Hidari</div>
+                                <div class="phrase-speak">Ridári</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Reto / Em frente</div>
                                 <div class="phrase-jp">まっすぐ</div>
                                 <div class="phrase-read">Massugu</div>
+                                <div class="phrase-speak">Massúgui</div>
                             </div>
                         </div>
                     </div>
@@ -4675,24 +4607,16 @@
                         </div>
                         <div class="phrase-list">
                             <div class="phrase-item">
-                                <div class="phrase-pt">Para [destino], por favor (táxi)</div>
-                                <div class="phrase-jp">[destino]までお願いします</div>
-                                <div class="phrase-read">[destino] made onegai shimasu</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Que horas sai o trem?</div>
-                                <div class="phrase-jp">電車は何時に出ますか？</div>
-                                <div class="phrase-read">Densha wa nanji ni demasu ka?</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">É este o trem para [lugar]?</div>
-                                <div class="phrase-jp">これは[lugar]行きですか？</div>
-                                <div class="phrase-read">Kore wa [lugar] yuki desu ka?</div>
-                            </div>
-                            <div class="phrase-item">
                                 <div class="phrase-pt">Pode parar aqui (táxi)</div>
                                 <div class="phrase-jp">ここで止めてください</div>
                                 <div class="phrase-read">Koko de tomete kudasai</div>
+                                <div class="phrase-speak">Cocô de tometé cudassái</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Shinjuku, por favor (táxi)</div>
+                                <div class="phrase-jp">新宿までお願いします</div>
+                                <div class="phrase-read">Shinjuku made onegai shimasu</div>
+                                <div class="phrase-speak">Shinjúku madé onegai shimass</div>
                             </div>
                         </div>
                     </div>
@@ -4708,31 +4632,25 @@
                                 <div class="phrase-pt">1 / 2 / 3</div>
                                 <div class="phrase-jp">一 / 二 / 三</div>
                                 <div class="phrase-read">Ichi / Ni / San</div>
+                                <div class="phrase-speak">Ítchi / Ni / San</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">4 / 5 / 6</div>
                                 <div class="phrase-jp">四 / 五 / 六</div>
                                 <div class="phrase-read">Yon / Go / Roku</div>
+                                <div class="phrase-speak">Yón / Gô / Rócu</div>
                             </div>
                             <div class="phrase-item">
-                                <div class="phrase-pt">7 / 8 / 9</div>
-                                <div class="phrase-jp">七 / 八 / 九</div>
-                                <div class="phrase-read">Nana / Hachi / Kyuu</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">10 / 100 / 1000</div>
-                                <div class="phrase-jp">十 / 百 / 千</div>
-                                <div class="phrase-read">Juu / Hyaku / Sen</div>
+                                <div class="phrase-pt">7 / 8 / 9 / 10</div>
+                                <div class="phrase-jp">七 / 八 / 九 / 十</div>
+                                <div class="phrase-read">Nana / Hachi / Kyuu / Juu</div>
+                                <div class="phrase-speak">Naná / Rátchi / Quiú / Djú</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">1 pessoa / 2 pessoas</div>
                                 <div class="phrase-jp">一人 / 二人</div>
                                 <div class="phrase-read">Hitori / Futari</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">1 item / 2 itens / 3 itens</div>
-                                <div class="phrase-jp">一つ / 二つ / 三つ</div>
-                                <div class="phrase-read">Hitotsu / Futatsu / Mittsu</div>
+                                <div class="phrase-speak">Htóri / Futári</div>
                             </div>
                         </div>
                     </div>
@@ -4748,41 +4666,37 @@
                                 <div class="phrase-pt">Ajuda!</div>
                                 <div class="phrase-jp">助けて！</div>
                                 <div class="phrase-read">Tasukete!</div>
+                                <div class="phrase-speak">Tassketé!</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Não entendo</div>
                                 <div class="phrase-jp">分かりません</div>
                                 <div class="phrase-read">Wakarimasen</div>
+                                <div class="phrase-speak">Wakarimasén</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Fala inglês?</div>
                                 <div class="phrase-jp">英語を話せますか？</div>
                                 <div class="phrase-read">Eigo wo hanasemasu ka?</div>
+                                <div class="phrase-speak">Êigo o hanasemasska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Pode falar mais devagar?</div>
                                 <div class="phrase-jp">もっとゆっくり話してください</div>
                                 <div class="phrase-read">Motto yukkuri hanashite kudasai</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Estou perdido</div>
-                                <div class="phrase-jp">道に迷いました</div>
-                                <div class="phrase-read">Michi ni mayoimashita</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Preciso de um médico</div>
-                                <div class="phrase-jp">医者が必要です</div>
-                                <div class="phrase-read">Isha ga hitsuyou desu</div>
+                                <div class="phrase-speak">Mótto yúkuri hanashté cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Posso tirar foto?</div>
                                 <div class="phrase-jp">写真を撮ってもいいですか？</div>
                                 <div class="phrase-read">Shashin wo totte mo ii desu ka?</div>
+                                <div class="phrase-speak">Sháshin o tóte mo ii desska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Pode tirar nossa foto?</div>
                                 <div class="phrase-jp">写真を撮ってもらえますか？</div>
                                 <div class="phrase-read">Shashin wo totte moraemasu ka?</div>
+                                <div class="phrase-speak">Sháshin o tóte moraemasska?</div>
                             </div>
                         </div>
                     </div>
@@ -4790,7 +4704,7 @@
                     <!-- Situações Úteis -->
                     <div class="phrase-category" onclick="toggleCategory(this, event)">
                         <div class="phrase-category-header">
-                            <span>Situações do Dia a Dia</span>
+                            <span>💬 Situações do Dia a Dia</span>
                             <span class="phrase-category-toggle">▼</span>
                         </div>
                         <div class="phrase-list">
@@ -4798,51 +4712,43 @@
                                 <div class="phrase-pt">Tem Wi-Fi?</div>
                                 <div class="phrase-jp">ワイファイはありますか？</div>
                                 <div class="phrase-read">Waifai wa arimasu ka?</div>
+                                <div class="phrase-speak">Uái-fái wa arimasska?</div>
                             </div>
                             <div class="phrase-item">
-                                <div class="phrase-pt">Aceita Suica/IC Card?</div>
+                                <div class="phrase-pt">Aceita Suica?</div>
                                 <div class="phrase-jp">スイカは使えますか？</div>
                                 <div class="phrase-read">Suika wa tsukaemasu ka?</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Está aberto?</div>
-                                <div class="phrase-jp">開いていますか？</div>
-                                <div class="phrase-read">Aite imasu ka?</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Que horas fecha?</div>
-                                <div class="phrase-jp">何時に閉まりますか？</div>
-                                <div class="phrase-read">Nanji ni shimarimasu ka?</div>
-                            </div>
-                            <div class="phrase-item">
-                                <div class="phrase-pt">Posso sentar aqui?</div>
-                                <div class="phrase-jp">ここに座ってもいいですか？</div>
-                                <div class="phrase-read">Koko ni suwatte mo ii desu ka?</div>
+                                <div class="phrase-speak">Súica wa tsukaemasska?</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Está bom / OK</div>
                                 <div class="phrase-jp">大丈夫です</div>
                                 <div class="phrase-read">Daijoubu desu</div>
+                                <div class="phrase-speak">Daidjôbu dess</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Espera um momento</div>
                                 <div class="phrase-jp">ちょっと待ってください</div>
                                 <div class="phrase-read">Chotto matte kudasai</div>
+                                <div class="phrase-speak">Tchóto maté cudassái</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Não precisa (recusar educadamente)</div>
                                 <div class="phrase-jp">結構です</div>
                                 <div class="phrase-read">Kekkou desu</div>
+                                <div class="phrase-speak">Kékko dess</div>
                             </div>
                             <div class="phrase-item">
-                                <div class="phrase-pt">Lindo! / Que bonito!</div>
+                                <div class="phrase-pt">Que bonito!</div>
                                 <div class="phrase-jp">綺麗ですね！</div>
                                 <div class="phrase-read">Kirei desu ne!</div>
+                                <div class="phrase-speak">Quirêi dess né!</div>
                             </div>
                             <div class="phrase-item">
                                 <div class="phrase-pt">Que legal! / Incrível!</div>
                                 <div class="phrase-jp">すごいですね！</div>
                                 <div class="phrase-read">Sugoi desu ne!</div>
+                                <div class="phrase-speak">Sugói dess né!</div>
                             </div>
                         </div>
                     </div>
@@ -5436,11 +5342,6 @@ Sugestões: Nohga Hotel Ueno, Hotel Coco Grand Ueno (~¥12.000-18.000/noite)
             if (e.target.classList.contains('modal-overlay')) closeModal('readme');
         });
 
-        // Toggle para info cards
-        function toggleInfoCard(element) {
-            element.classList.toggle('open');
-        }
-
         // Toggle para seção principal de frases
         function togglePhrases() {
             const section = document.getElementById('phrasesSection');
@@ -5454,49 +5355,6 @@ Sugestões: Nohga Hotel Ueno, Hotel Coco Grand Ueno (~¥12.000-18.000/noite)
                 element.classList.toggle('open');
             }
         }
-
-        // Abrir Google Tradutor para ouvir a frase
-        function openTranslator(japaneseText) {
-            const url = `https://translate.google.com/?sl=ja&tl=pt&text=${encodeURIComponent(japaneseText)}&op=translate`;
-            window.open(url, '_blank');
-        }
-
-        // Adicionar botões de som em todas as frases
-        document.addEventListener('DOMContentLoaded', function() {
-            const phraseItems = document.querySelectorAll('.phrase-item');
-            phraseItems.forEach(item => {
-                const jpText = item.querySelector('.phrase-jp');
-                if (jpText && !jpText.textContent.includes('[')) {
-                    // Criar wrapper para o texto
-                    const textWrapper = document.createElement('div');
-                    textWrapper.className = 'phrase-text';
-
-                    // Mover os elementos de texto para o wrapper
-                    const pt = item.querySelector('.phrase-pt');
-                    const read = item.querySelector('.phrase-read');
-
-                    if (pt) textWrapper.appendChild(pt);
-                    if (jpText) textWrapper.appendChild(jpText);
-                    if (read) textWrapper.appendChild(read);
-
-                    // Criar botão de som
-                    const soundBtn = document.createElement('a');
-                    soundBtn.className = 'phrase-sound';
-                    soundBtn.innerHTML = '🔊';
-                    soundBtn.href = '#';
-                    soundBtn.onclick = function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        openTranslator(jpText.textContent);
-                    };
-
-                    // Limpar e adicionar elementos
-                    item.innerHTML = '';
-                    item.appendChild(textWrapper);
-                    item.appendChild(soundBtn);
-                }
-            });
-        });
     </script>
 </body>
 

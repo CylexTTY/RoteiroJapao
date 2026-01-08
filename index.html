@@ -673,6 +673,137 @@
         .day-section.active .note {
             animation: fadeIn 0.3s ease forwards;
         }
+
+        /* Frases em Japonês - Estilos */
+        .phrase-section {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-light);
+        }
+
+        .phrase-header {
+            background: linear-gradient(135deg, #D33131 0%, #A82828 100%);
+            color: white;
+            padding: 14px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .phrase-header:active {
+            opacity: 0.9;
+        }
+
+        .phrase-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .phrase-section.open .phrase-toggle {
+            transform: rotate(180deg);
+        }
+
+        .phrase-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .phrase-section.open .phrase-content {
+            max-height: 2000px;
+        }
+
+        .phrase-category {
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .phrase-category:last-child {
+            border-bottom: none;
+        }
+
+        .phrase-category-header {
+            background: var(--cream);
+            padding: 10px 14px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--vermillion);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .phrase-category-header:active {
+            background: var(--gray-light);
+        }
+
+        .phrase-category-toggle {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .phrase-category.open .phrase-category-toggle {
+            transform: rotate(180deg);
+        }
+
+        .phrase-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .phrase-category.open .phrase-list {
+            max-height: 1000px;
+        }
+
+        .phrase-item {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .phrase-item:last-child {
+            border-bottom: none;
+        }
+
+        .phrase-pt {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+
+        .phrase-jp {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 2px;
+        }
+
+        .phrase-read {
+            font-size: 0.85rem;
+            color: var(--vermillion);
+            font-style: italic;
+        }
+
+        /* Cores sutis para dias especiais */
+        .day-btn.marathon {
+            background: rgba(211, 49, 49, 0.12);
+            border-color: rgba(211, 49, 49, 0.3);
+        }
+
+        .day-btn.fuji {
+            background: rgba(61, 124, 71, 0.12);
+            border-color: rgba(61, 124, 71, 0.3);
+        }
+
+        .day-btn.usj {
+            background: rgba(123, 63, 160, 0.12);
+            border-color: rgba(123, 63, 160, 0.3);
+        }
     </style>
 </head>
 
@@ -687,16 +818,16 @@
             <button class="day-btn tokyo" data-day="2">D2</button>
             <button class="day-btn tokyo" data-day="3">D3</button>
             <button class="day-btn tokyo" data-day="4">D4</button>
-            <button class="day-btn tokyo special" data-day="5">D5 🏃</button>
+            <button class="day-btn tokyo marathon" data-day="5">D5 🏃</button>
             <button class="day-btn tokyo" data-day="6">D6</button>
             <button class="day-btn tokyo" data-day="7">D7</button>
-            <button class="day-btn tokyo" data-day="8">D8 🗻</button>
+            <button class="day-btn tokyo fuji" data-day="8">D8 🗻</button>
             <button class="day-btn kyoto" data-day="9">D9</button>
             <button class="day-btn kyoto" data-day="10">D10</button>
             <button class="day-btn kyoto" data-day="11">D11</button>
             <button class="day-btn kyoto" data-day="12">D12</button>
             <button class="day-btn nara special" data-day="13">D13 🔥</button>
-            <button class="day-btn osaka special" data-day="14">D14 🎢</button>
+            <button class="day-btn osaka usj" data-day="14">D14 🎢</button>
             <button class="day-btn osaka" data-day="15">D15</button>
             <button class="day-btn tokyo" data-day="16">D16</button>
             <button class="day-btn tokyo" data-day="17">D17</button>
@@ -4193,32 +4324,348 @@
                 </div>
             </div>
 
-            <div class="info-section">
-                <div class="info-section-header">🌡️ Clima Esperado</div>
-                <div class="info-section-body">
-                    <div class="info-row">
-                        <span class="info-row-label">25-28/02</span>
-                        <span class="info-row-value">3-12°C</span>
+            <!-- Frases em Japonês -->
+            <div class="phrase-section" id="phrasesSection">
+                <div class="phrase-header" onclick="togglePhrases()">
+                    <span>🗣️ Frases Úteis em Japonês</span>
+                    <span class="phrase-toggle">▼</span>
+                </div>
+                <div class="phrase-content">
+                    <!-- Cumprimentos e Cortesia -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>👋 Cumprimentos e Cortesia</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Obrigado (muito usado)</div>
+                                <div class="phrase-jp">ありがとうございます</div>
+                                <div class="phrase-read">Arigatou gozaimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Obrigado (informal)</div>
+                                <div class="phrase-jp">ありがとう</div>
+                                <div class="phrase-read">Arigatou</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Com licença / Desculpa</div>
+                                <div class="phrase-jp">すみません</div>
+                                <div class="phrase-read">Sumimasen</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Desculpe (mais formal)</div>
+                                <div class="phrase-jp">ごめんなさい</div>
+                                <div class="phrase-read">Gomen nasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Bom dia</div>
+                                <div class="phrase-jp">おはようございます</div>
+                                <div class="phrase-read">Ohayou gozaimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Boa tarde / Olá</div>
+                                <div class="phrase-jp">こんにちは</div>
+                                <div class="phrase-read">Konnichiwa</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Boa noite</div>
+                                <div class="phrase-jp">こんばんは</div>
+                                <div class="phrase-read">Konbanwa</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Por favor (ao pedir algo)</div>
+                                <div class="phrase-jp">お願いします</div>
+                                <div class="phrase-read">Onegai shimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Sim</div>
+                                <div class="phrase-jp">はい</div>
+                                <div class="phrase-read">Hai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Não</div>
+                                <div class="phrase-jp">いいえ</div>
+                                <div class="phrase-read">Iie</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-row">
-                        <span class="info-row-label">01-04/03</span>
-                        <span class="info-row-value">4-15°C</span>
+
+                    <!-- Restaurante -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>🍜 No Restaurante</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Um copo de água, por favor</div>
+                                <div class="phrase-jp">お水をください</div>
+                                <div class="phrase-read">Omizu wo kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">A conta, por favor</div>
+                                <div class="phrase-jp">お会計お願いします</div>
+                                <div class="phrase-read">Okaikei onegai shimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Isso, por favor (apontando)</div>
+                                <div class="phrase-jp">これをください</div>
+                                <div class="phrase-read">Kore wo kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Mais um, por favor</div>
+                                <div class="phrase-jp">もう一つください</div>
+                                <div class="phrase-read">Mou hitotsu kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Estava delicioso!</div>
+                                <div class="phrase-jp">おいしかったです</div>
+                                <div class="phrase-read">Oishikatta desu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Vou comer! (antes de comer)</div>
+                                <div class="phrase-jp">いただきます</div>
+                                <div class="phrase-read">Itadakimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Obrigado pela refeição (após)</div>
+                                <div class="phrase-jp">ごちそうさまでした</div>
+                                <div class="phrase-read">Gochisousama deshita</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Menu, por favor</div>
+                                <div class="phrase-jp">メニューをください</div>
+                                <div class="phrase-read">Menyuu wo kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Mesa para 2 pessoas</div>
+                                <div class="phrase-jp">二人です</div>
+                                <div class="phrase-read">Futari desu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Sem [ingrediente], por favor</div>
+                                <div class="phrase-jp">[ingrediente]抜きで</div>
+                                <div class="phrase-read">[ingrediente] nuki de</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-row">
-                        <span class="info-row-label">05-11/03</span>
-                        <span class="info-row-value">4-15°C</span>
+
+                    <!-- Compras -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>🛍️ Compras</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Quanto custa?</div>
+                                <div class="phrase-jp">いくらですか？</div>
+                                <div class="phrase-read">Ikura desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Isso, por favor</div>
+                                <div class="phrase-jp">これをください</div>
+                                <div class="phrase-read">Kore wo kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Posso pagar com cartão?</div>
+                                <div class="phrase-jp">カードで払えますか？</div>
+                                <div class="phrase-read">Kaado de haraemasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Tax-free, por favor</div>
+                                <div class="phrase-jp">免税でお願いします</div>
+                                <div class="phrase-read">Menzei de onegai shimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Tem tamanho maior?</div>
+                                <div class="phrase-jp">大きいサイズはありますか？</div>
+                                <div class="phrase-read">Ookii saizu wa arimasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Tem tamanho menor?</div>
+                                <div class="phrase-jp">小さいサイズはありますか？</div>
+                                <div class="phrase-read">Chiisai saizu wa arimasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Posso experimentar?</div>
+                                <div class="phrase-jp">試着してもいいですか？</div>
+                                <div class="phrase-read">Shichaku shite mo ii desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Só estou olhando</div>
+                                <div class="phrase-jp">見ているだけです</div>
+                                <div class="phrase-read">Mite iru dake desu</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-row">
-                        <span class="info-row-label">12-14/03</span>
-                        <span class="info-row-value">6-17°C</span>
+
+                    <!-- Direções e Locais -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>🚻 Direções e Locais</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Onde fica o banheiro?</div>
+                                <div class="phrase-jp">トイレはどこですか？</div>
+                                <div class="phrase-read">Toire wa doko desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Onde fica a estação?</div>
+                                <div class="phrase-jp">駅はどこですか？</div>
+                                <div class="phrase-read">Eki wa doko desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Onde fica [lugar]?</div>
+                                <div class="phrase-jp">[lugar]はどこですか？</div>
+                                <div class="phrase-read">[lugar] wa doko desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">É longe daqui?</div>
+                                <div class="phrase-jp">ここから遠いですか？</div>
+                                <div class="phrase-read">Koko kara tooi desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">À direita</div>
+                                <div class="phrase-jp">右</div>
+                                <div class="phrase-read">Migi</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">À esquerda</div>
+                                <div class="phrase-jp">左</div>
+                                <div class="phrase-read">Hidari</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Reto / Em frente</div>
+                                <div class="phrase-jp">まっすぐ</div>
+                                <div class="phrase-read">Massugu</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transporte -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>🚃 Transporte</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Para [destino], por favor (táxi)</div>
+                                <div class="phrase-jp">[destino]までお願いします</div>
+                                <div class="phrase-read">[destino] made onegai shimasu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Que horas sai o trem?</div>
+                                <div class="phrase-jp">電車は何時に出ますか？</div>
+                                <div class="phrase-read">Densha wa nanji ni demasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">É este o trem para [lugar]?</div>
+                                <div class="phrase-jp">これは[lugar]行きですか？</div>
+                                <div class="phrase-read">Kore wa [lugar] yuki desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Pode parar aqui (táxi)</div>
+                                <div class="phrase-jp">ここで止めてください</div>
+                                <div class="phrase-read">Koko de tomete kudasai</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Números -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>🔢 Números</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">1 / 2 / 3</div>
+                                <div class="phrase-jp">一 / 二 / 三</div>
+                                <div class="phrase-read">Ichi / Ni / San</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">4 / 5 / 6</div>
+                                <div class="phrase-jp">四 / 五 / 六</div>
+                                <div class="phrase-read">Yon / Go / Roku</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">7 / 8 / 9</div>
+                                <div class="phrase-jp">七 / 八 / 九</div>
+                                <div class="phrase-read">Nana / Hachi / Kyuu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">10 / 100 / 1000</div>
+                                <div class="phrase-jp">十 / 百 / 千</div>
+                                <div class="phrase-read">Juu / Hyaku / Sen</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">1 pessoa / 2 pessoas</div>
+                                <div class="phrase-jp">一人 / 二人</div>
+                                <div class="phrase-read">Hitori / Futari</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">1 item / 2 itens / 3 itens</div>
+                                <div class="phrase-jp">一つ / 二つ / 三つ</div>
+                                <div class="phrase-read">Hitotsu / Futatsu / Mittsu</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergências -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>🆘 Emergências e Ajuda</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Ajuda!</div>
+                                <div class="phrase-jp">助けて！</div>
+                                <div class="phrase-read">Tasukete!</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Não entendo</div>
+                                <div class="phrase-jp">分かりません</div>
+                                <div class="phrase-read">Wakarimasen</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Fala inglês?</div>
+                                <div class="phrase-jp">英語を話せますか？</div>
+                                <div class="phrase-read">Eigo wo hanasemasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Pode falar mais devagar?</div>
+                                <div class="phrase-jp">もっとゆっくり話してください</div>
+                                <div class="phrase-read">Motto yukkuri hanashite kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Estou perdido</div>
+                                <div class="phrase-jp">道に迷いました</div>
+                                <div class="phrase-read">Michi ni mayoimashita</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Preciso de um médico</div>
+                                <div class="phrase-jp">医者が必要です</div>
+                                <div class="phrase-read">Isha ga hitsuyou desu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Posso tirar foto?</div>
+                                <div class="phrase-jp">写真を撮ってもいいですか？</div>
+                                <div class="phrase-read">Shashin wo totte mo ii desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Pode tirar nossa foto?</div>
+                                <div class="phrase-jp">写真を撮ってもらえますか？</div>
+                                <div class="phrase-read">Shashin wo totte moraemasu ka?</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="note">
-                <div class="note-title">🧥 O que levar</div>
-                <div class="note-text">Casaco de inverno, roupas em camadas, guarda-chuva, sapatos confortáveis e
-                    impermeáveis.</div>
             </div>
 
             <div class="info-section">
@@ -4825,6 +5272,20 @@ Sugestões: Nohga Hotel Ueno, Hotel Coco Grand Ueno (~¥12.000-18.000/noite)
         document.getElementById('readmeModal').addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) closeModal('readme');
         });
+
+        // Toggle para seção principal de frases
+        function togglePhrases() {
+            const section = document.getElementById('phrasesSection');
+            section.classList.toggle('open');
+        }
+
+        // Toggle para categorias individuais
+        function toggleCategory(element, event) {
+            event.stopPropagation();
+            if (event.target.closest('.phrase-category-header')) {
+                element.classList.toggle('open');
+            }
+        }
     </script>
 </body>
 

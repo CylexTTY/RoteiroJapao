@@ -692,7 +692,7 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .phrase-header:active {
@@ -700,8 +700,9 @@
         }
 
         .phrase-toggle {
-            font-size: 1.2rem;
+            font-size: 0.7rem;
             transition: transform 0.3s ease;
+            opacity: 0.8;
         }
 
         .phrase-section.open .phrase-toggle {
@@ -709,13 +710,11 @@
         }
 
         .phrase-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+            display: none;
         }
 
         .phrase-section.open .phrase-content {
-            max-height: 2000px;
+            display: block;
         }
 
         .phrase-category {
@@ -728,9 +727,9 @@
 
         .phrase-category-header {
             background: var(--cream);
-            padding: 10px 14px;
+            padding: 12px 16px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: var(--vermillion);
             cursor: pointer;
             display: flex;
@@ -743,8 +742,9 @@
         }
 
         .phrase-category-toggle {
-            font-size: 0.9rem;
+            font-size: 0.65rem;
             transition: transform 0.3s ease;
+            opacity: 0.6;
         }
 
         .phrase-category.open .phrase-category-toggle {
@@ -752,57 +752,143 @@
         }
 
         .phrase-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
+            display: none;
+            background: var(--white);
         }
 
         .phrase-category.open .phrase-list {
-            max-height: 1000px;
+            display: block;
         }
 
         .phrase-item {
-            padding: 10px 14px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
         }
 
         .phrase-item:last-child {
             border-bottom: none;
         }
 
+        .phrase-text {
+            flex: 1;
+        }
+
         .phrase-pt {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--gray);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .phrase-jp {
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--black);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .phrase-read {
-            font-size: 0.85rem;
+            font-size: 1rem;
             color: var(--vermillion);
             font-style: italic;
         }
 
+        .phrase-sound {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .phrase-sound:active {
+            background: #2459B8;
+            transform: scale(0.95);
+        }
+
+        /* Info Page - Seções Expansíveis */
+        .info-card {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-light);
+        }
+
+        .info-card-header {
+            padding: 14px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: var(--black);
+            color: white;
+        }
+
+        .info-card-header:active {
+            opacity: 0.9;
+        }
+
+        .info-card-toggle {
+            font-size: 0.65rem;
+            transition: transform 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .info-card.open .info-card-toggle {
+            transform: rotate(180deg);
+        }
+
+        .info-card-content {
+            display: none;
+            padding: 14px 16px;
+        }
+
+        .info-card.open .info-card-content {
+            display: block;
+        }
+
         /* Cores sutis para dias especiais */
         .day-btn.marathon {
-            background: rgba(211, 49, 49, 0.12);
-            border-color: rgba(211, 49, 49, 0.3);
+            background: rgba(211, 49, 49, 0.15);
+            border-color: rgba(211, 49, 49, 0.35);
         }
 
         .day-btn.fuji {
-            background: rgba(61, 124, 71, 0.12);
-            border-color: rgba(61, 124, 71, 0.3);
+            background: rgba(61, 124, 71, 0.15);
+            border-color: rgba(61, 124, 71, 0.35);
+        }
+
+        .day-btn.nara-special {
+            background: rgba(61, 124, 71, 0.15);
+            border-color: rgba(61, 124, 71, 0.35);
         }
 
         .day-btn.usj {
-            background: rgba(123, 63, 160, 0.12);
-            border-color: rgba(123, 63, 160, 0.3);
+            background: rgba(123, 63, 160, 0.15);
+            border-color: rgba(123, 63, 160, 0.35);
+        }
+
+        /* Quando ativo, manter cor consistente */
+        .day-btn.marathon.active,
+        .day-btn.fuji.active,
+        .day-btn.nara-special.active,
+        .day-btn.usj.active {
+            background: var(--vermillion);
+            color: white;
+            border-color: var(--vermillion);
         }
     </style>
 </head>
@@ -826,7 +912,7 @@
             <button class="day-btn kyoto" data-day="10">D10</button>
             <button class="day-btn kyoto" data-day="11">D11</button>
             <button class="day-btn kyoto" data-day="12">D12</button>
-            <button class="day-btn nara special" data-day="13">D13 🔥</button>
+            <button class="day-btn nara nara-special" data-day="13">D13 🔥</button>
             <button class="day-btn osaka usj" data-day="14">D14 🎢</button>
             <button class="day-btn osaka" data-day="15">D15</button>
             <button class="day-btn tokyo" data-day="16">D16</button>
@@ -4147,38 +4233,47 @@
             <div class="day-card">
                 <div class="day-card-header" style="background: linear-gradient(135deg, #6B6B6B 0%, #4A4A4A 100%);">
                     <div class="day-card-date">Informações Gerais</div>
-                    <div class="day-card-title">📋 Resumo da Viagem</div>
+                    <div class="day-card-title">Resumo da Viagem</div>
                 </div>
             </div>
 
-            <a href="https://maps.app.goo.gl/XnAyLVtw7UtbhctW9" target="_blank" class="map-all-btn">🗺️ Ver Mapa
-                Completo da Viagem</a>
+            <a href="https://maps.app.goo.gl/XnAyLVtw7UtbhctW9" target="_blank" class="map-all-btn">Ver Mapa Completo da Viagem</a>
 
-            <div class="note">
-                <div class="note-title">🎨 Legenda das Cores dos Dias</div>
-                <div class="note-text" style="display: flex; flex-wrap: wrap; gap: 12px;">
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 16px; height: 4px; background: var(--blue); border-radius: 2px;"></span>
-                        Tokyo (D1-D8, D16-D18)
-                    </span>
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 16px; height: 4px; background: var(--purple); border-radius: 2px;"></span>
-                        Kyoto (D9-D12)
-                    </span>
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 16px; height: 4px; background: var(--green); border-radius: 2px;"></span>
-                        Nara (D13)
-                    </span>
-                    <span style="display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 16px; height: 4px; background: #E67E22; border-radius: 2px;"></span>
-                        Osaka (D14-D15)
-                    </span>
+            <!-- Legenda -->
+            <div class="info-card" onclick="toggleInfoCard(this)">
+                <div class="info-card-header" style="background: var(--gray);">
+                    <span>Legenda das Cores dos Dias</span>
+                    <span class="info-card-toggle">▼</span>
+                </div>
+                <div class="info-card-content">
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.95rem;">
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <span style="width: 18px; height: 5px; background: var(--blue); border-radius: 2px;"></span>
+                            Tokyo (D1-D8, D16-D18)
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <span style="width: 18px; height: 5px; background: var(--purple); border-radius: 2px;"></span>
+                            Kyoto (D9-D12)
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <span style="width: 18px; height: 5px; background: var(--green); border-radius: 2px;"></span>
+                            Nara (D13)
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <span style="width: 18px; height: 5px; background: #E67E22; border-radius: 2px;"></span>
+                            Osaka (D14-D15)
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <div class="info-section">
-                <div class="info-section-header">🎟️ Reservas Obrigatórias</div>
-                <div class="info-section-body">
+            <!-- Reservas -->
+            <div class="info-card" onclick="toggleInfoCard(this)">
+                <div class="info-card-header" style="background: var(--vermillion);">
+                    <span>Reservas Obrigatórias</span>
+                    <span class="info-card-toggle">▼</span>
+                </div>
+                <div class="info-card-content">
                     <div class="info-row">
                         <span class="info-row-label">27/02 - Tokyo Skytree</span>
                         <span class="info-row-value">¥2.100</span>
@@ -4195,17 +4290,19 @@
                         <span class="info-row-label">12/03 - Sumo Club</span>
                         <span class="info-row-value">~¥16.000</span>
                     </div>
+                    <div style="margin-top: 12px; padding: 10px; background: #FDEAEA; border-radius: 8px; font-size: 0.9rem; color: var(--vermillion);">
+                        <strong>Reservar 30-60 dias antes!</strong> Especialmente USJ e Shibuya Sky.
+                    </div>
                 </div>
             </div>
 
-            <div class="note important">
-                <div class="note-title">⚠️ Reservar 30-60 dias antes!</div>
-                <div class="note-text">Especialmente USJ e Shibuya Sky - esgotam rápido em março (alta temporada)!</div>
-            </div>
-
-            <div class="info-section">
-                <div class="info-section-header">🚄 Transportes Principais</div>
-                <div class="info-section-body">
+            <!-- Transportes -->
+            <div class="info-card" onclick="toggleInfoCard(this)">
+                <div class="info-card-header" style="background: var(--blue);">
+                    <span>Transportes Principais</span>
+                    <span class="info-card-toggle">▼</span>
+                </div>
+                <div class="info-card-content">
                     <div class="info-row">
                         <span class="info-row-label">Tokyo ↔ Kyoto (Shinkansen)</span>
                         <span class="info-row-value">2h40 · ¥13.850</span>
@@ -4230,19 +4327,20 @@
                         <span class="info-row-label">Ueno → Narita (Skyliner)</span>
                         <span class="info-row-value">36 min · ¥2.520</span>
                     </div>
+                    <div style="margin-top: 12px; padding: 10px; background: var(--cream); border-radius: 8px; font-size: 0.9rem;">
+                        <strong>IC Card - Welcome Suica:</strong> Comprar na chegada! ¥1.500 (com ¥1.500 de crédito). Funciona em metrô, trens, ônibus e konbinis.
+                    </div>
                 </div>
             </div>
 
-            <div class="note">
-                <div class="note-title">💳 IC Card - Welcome Suica</div>
-                <div class="note-text">Comprar na chegada! ¥1.500 (com ¥1.500 de crédito). Funciona em metrô, trens,
-                    ônibus e konbinis.</div>
-            </div>
-
-            <div class="info-section">
-                <div class="info-section-header">📜 Goshuins - Lista Completa</div>
-                <div class="info-section-body">
-                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--vermillion);">Tokyo (4)</div>
+            <!-- Goshuins -->
+            <div class="info-card" onclick="toggleInfoCard(this)">
+                <div class="info-card-header" style="background: linear-gradient(135deg, var(--gold) 0%, #B8960C 100%);">
+                    <span>Goshuins - Lista Completa</span>
+                    <span class="info-card-toggle">▼</span>
+                </div>
+                <div class="info-card-content">
+                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--blue);">Tokyo (4)</div>
                     <div class="info-row">
                         <span class="info-row-label">Senso-ji</span>
                         <span class="info-row-value">27/02</span>
@@ -4259,7 +4357,7 @@
                         <span class="info-row-label">Gotokuji Temple</span>
                         <span class="info-row-value">01/03</span>
                     </div>
-                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--vermillion);">Kyoto (7)</div>
+                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--purple);">Kyoto (7)</div>
                     <div class="info-row">
                         <span class="info-row-label">Fushimi Inari Taisha</span>
                         <span class="info-row-value">06/03</span>
@@ -4288,7 +4386,7 @@
                         <span class="info-row-label">Ryoan-ji</span>
                         <span class="info-row-value">08/03</span>
                     </div>
-                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--vermillion);">Nara (2)</div>
+                    <div style="font-weight: 600; margin: 12px 0 8px; color: var(--green);">Nara (2)</div>
                     <div class="info-row">
                         <span class="info-row-label">Todai-ji</span>
                         <span class="info-row-value">09/03</span>
@@ -4297,18 +4395,19 @@
                         <span class="info-row-label">Kasuga Taisha</span>
                         <span class="info-row-value">09/03</span>
                     </div>
+                    <div style="margin-top: 12px; padding: 10px; background: var(--cream); border-radius: 8px; font-size: 0.9rem;">
+                        <strong>Goshuincho:</strong> Comprar no primeiro templo (Senso-ji) - ¥1.500-2.000.
+                    </div>
                 </div>
             </div>
 
-            <div class="note">
-                <div class="note-title">📜 Comprar Goshuincho</div>
-                <div class="note-text">No primeiro templo (Senso-ji) - ¥1.500-2.000. Comprar no Yogodo Hall ou Asakusa
-                    Shrine.</div>
-            </div>
-
-            <div class="info-section">
-                <div class="info-section-header">🏪 Konbinis - Melhores Opções</div>
-                <div class="info-section-body">
+            <!-- Konbinis -->
+            <div class="info-card" onclick="toggleInfoCard(this)">
+                <div class="info-card-header" style="background: var(--green);">
+                    <span>Konbinis - Melhores Opções</span>
+                    <span class="info-card-toggle">▼</span>
+                </div>
+                <div class="info-card-content">
                     <div class="info-row">
                         <span class="info-row-label">7-Eleven</span>
                         <span class="info-row-value">Melhor café, ATM internacional</span>
@@ -4320,6 +4419,28 @@
                     <div class="info-row">
                         <span class="info-row-label">Lawson</span>
                         <span class="info-row-value">Premium Roll Cake, Uchi Cafe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hotéis -->
+            <div class="info-card" onclick="toggleInfoCard(this)">
+                <div class="info-card-header" style="background: var(--purple);">
+                    <span>Hotéis</span>
+                    <span class="info-card-toggle">▼</span>
+                </div>
+                <div class="info-card-content">
+                    <div class="info-row">
+                        <span class="info-row-label">Tokyo (25/02 - 05/03)</span>
+                        <span class="info-row-value">Hotel Shu, Shinjuku</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">Kyoto (05/03 - 12/03)</span>
+                        <span class="info-row-value">The M's Kyoto</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-row-label">Tokyo (12/03 - 14/03)</span>
+                        <span class="info-row-value">Hotel próximo Ueno</span>
                     </div>
                 </div>
             </div>
@@ -4665,23 +4786,65 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="info-section">
-                <div class="info-section-header">🏨 Hotéis</div>
-                <div class="info-section-body">
-                    <div class="info-row">
-                        <span class="info-row-label">Tokyo (25/02 - 05/03)</span>
-                        <span class="info-row-value">Hotel Shu, Shinjuku</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-row-label">Kyoto (05/03 - 12/03)</span>
-                        <span class="info-row-value">The M's Kyoto</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-row-label">Tokyo (12/03 - 14/03)</span>
-                        <span class="info-row-value">Hotel próximo Ueno</span>
+                    <!-- Situações Úteis -->
+                    <div class="phrase-category" onclick="toggleCategory(this, event)">
+                        <div class="phrase-category-header">
+                            <span>Situações do Dia a Dia</span>
+                            <span class="phrase-category-toggle">▼</span>
+                        </div>
+                        <div class="phrase-list">
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Tem Wi-Fi?</div>
+                                <div class="phrase-jp">ワイファイはありますか？</div>
+                                <div class="phrase-read">Waifai wa arimasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Aceita Suica/IC Card?</div>
+                                <div class="phrase-jp">スイカは使えますか？</div>
+                                <div class="phrase-read">Suika wa tsukaemasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Está aberto?</div>
+                                <div class="phrase-jp">開いていますか？</div>
+                                <div class="phrase-read">Aite imasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Que horas fecha?</div>
+                                <div class="phrase-jp">何時に閉まりますか？</div>
+                                <div class="phrase-read">Nanji ni shimarimasu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Posso sentar aqui?</div>
+                                <div class="phrase-jp">ここに座ってもいいですか？</div>
+                                <div class="phrase-read">Koko ni suwatte mo ii desu ka?</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Está bom / OK</div>
+                                <div class="phrase-jp">大丈夫です</div>
+                                <div class="phrase-read">Daijoubu desu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Espera um momento</div>
+                                <div class="phrase-jp">ちょっと待ってください</div>
+                                <div class="phrase-read">Chotto matte kudasai</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Não precisa (recusar educadamente)</div>
+                                <div class="phrase-jp">結構です</div>
+                                <div class="phrase-read">Kekkou desu</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Lindo! / Que bonito!</div>
+                                <div class="phrase-jp">綺麗ですね！</div>
+                                <div class="phrase-read">Kirei desu ne!</div>
+                            </div>
+                            <div class="phrase-item">
+                                <div class="phrase-pt">Que legal! / Incrível!</div>
+                                <div class="phrase-jp">すごいですね！</div>
+                                <div class="phrase-read">Sugoi desu ne!</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -5273,6 +5436,11 @@ Sugestões: Nohga Hotel Ueno, Hotel Coco Grand Ueno (~¥12.000-18.000/noite)
             if (e.target.classList.contains('modal-overlay')) closeModal('readme');
         });
 
+        // Toggle para info cards
+        function toggleInfoCard(element) {
+            element.classList.toggle('open');
+        }
+
         // Toggle para seção principal de frases
         function togglePhrases() {
             const section = document.getElementById('phrasesSection');
@@ -5286,6 +5454,49 @@ Sugestões: Nohga Hotel Ueno, Hotel Coco Grand Ueno (~¥12.000-18.000/noite)
                 element.classList.toggle('open');
             }
         }
+
+        // Abrir Google Tradutor para ouvir a frase
+        function openTranslator(japaneseText) {
+            const url = `https://translate.google.com/?sl=ja&tl=pt&text=${encodeURIComponent(japaneseText)}&op=translate`;
+            window.open(url, '_blank');
+        }
+
+        // Adicionar botões de som em todas as frases
+        document.addEventListener('DOMContentLoaded', function() {
+            const phraseItems = document.querySelectorAll('.phrase-item');
+            phraseItems.forEach(item => {
+                const jpText = item.querySelector('.phrase-jp');
+                if (jpText && !jpText.textContent.includes('[')) {
+                    // Criar wrapper para o texto
+                    const textWrapper = document.createElement('div');
+                    textWrapper.className = 'phrase-text';
+
+                    // Mover os elementos de texto para o wrapper
+                    const pt = item.querySelector('.phrase-pt');
+                    const read = item.querySelector('.phrase-read');
+
+                    if (pt) textWrapper.appendChild(pt);
+                    if (jpText) textWrapper.appendChild(jpText);
+                    if (read) textWrapper.appendChild(read);
+
+                    // Criar botão de som
+                    const soundBtn = document.createElement('a');
+                    soundBtn.className = 'phrase-sound';
+                    soundBtn.innerHTML = '🔊';
+                    soundBtn.href = '#';
+                    soundBtn.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openTranslator(jpText.textContent);
+                    };
+
+                    // Limpar e adicionar elementos
+                    item.innerHTML = '';
+                    item.appendChild(textWrapper);
+                    item.appendChild(soundBtn);
+                }
+            });
+        });
     </script>
 </body>
 

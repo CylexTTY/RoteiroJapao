@@ -763,10 +763,18 @@
         .phrase-item {
             padding: 12px 16px;
             border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
         }
 
         .phrase-item:last-child {
             border-bottom: none;
+        }
+
+        .phrase-text {
+            flex: 1;
         }
 
         .phrase-pt {
@@ -786,6 +794,26 @@
             font-size: 1rem;
             color: var(--vermillion);
             font-style: italic;
+        }
+
+        .phrase-sound {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .phrase-sound:active {
+            background: #2459B8;
+            transform: scale(0.95);
         }
 
         /* Info Page - Seções Expansíveis */
@@ -5426,6 +5454,49 @@ Sugestões: Nohga Hotel Ueno, Hotel Coco Grand Ueno (~¥12.000-18.000/noite)
                 element.classList.toggle('open');
             }
         }
+
+        // Abrir Google Tradutor para ouvir a frase
+        function openTranslator(japaneseText) {
+            const url = `https://translate.google.com/?sl=ja&tl=pt&text=${encodeURIComponent(japaneseText)}&op=translate`;
+            window.open(url, '_blank');
+        }
+
+        // Adicionar botões de som em todas as frases
+        document.addEventListener('DOMContentLoaded', function() {
+            const phraseItems = document.querySelectorAll('.phrase-item');
+            phraseItems.forEach(item => {
+                const jpText = item.querySelector('.phrase-jp');
+                if (jpText && !jpText.textContent.includes('[')) {
+                    // Criar wrapper para o texto
+                    const textWrapper = document.createElement('div');
+                    textWrapper.className = 'phrase-text';
+
+                    // Mover os elementos de texto para o wrapper
+                    const pt = item.querySelector('.phrase-pt');
+                    const read = item.querySelector('.phrase-read');
+
+                    if (pt) textWrapper.appendChild(pt);
+                    if (jpText) textWrapper.appendChild(jpText);
+                    if (read) textWrapper.appendChild(read);
+
+                    // Criar botão de som
+                    const soundBtn = document.createElement('a');
+                    soundBtn.className = 'phrase-sound';
+                    soundBtn.innerHTML = '🔊';
+                    soundBtn.href = '#';
+                    soundBtn.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openTranslator(jpText.textContent);
+                    };
+
+                    // Limpar e adicionar elementos
+                    item.innerHTML = '';
+                    item.appendChild(textWrapper);
+                    item.appendChild(soundBtn);
+                }
+            });
+        });
     </script>
 </body>
 
